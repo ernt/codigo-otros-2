@@ -1,8 +1,19 @@
-var formulario = document.querySelector("#form")
+/* Apartir de un queryselector entra a la lista de elementos de form ,
+despues guarda el valor de cada input , para el input de nacionalidad al 
+ser un select guarda el elemento y el indice ademas de el valor, muestra en consola
+el nombre , edad y nacionalidad, pregunta si el nombre esta vacio entonces agrega la clase
+error a n , si edad es menor a 18 o mayor a 120 de hace lo mismo y en caso de que sea 
+mayo a 0 y mayor a 18 y menor a 120 agrega los invitados, al final crea un elemento 
+con los datos ingresados junto con un boton de borrar invitado
+
+*/
+
+
+var formulario = document.querySelector("form");
 
 formulario.onsubmit = function(e) {
 
-  e.prevent();
+  e.preventDefault();
   
   var n = formulario.elements[0]
   var e = formulario.elements[1]
@@ -11,13 +22,16 @@ formulario.onsubmit = function(e) {
   var nombre = n.value
   var edad = e.value
 
+
   var i = na.selectedIndex
   var nacionalidad = na.options[i].value
-  console.log(nombre, edad)
-  console.log(nacionalidad)
+  console.log(nombre, edad);
+  console.log(nacionalidad);
 
-  if (nombre.length === 0) {
+  if (nombre.length == 0) {
     n.classList.add("error")
+
+    
   }
   if (edad < 18 || edad > 120) {
     e.classList.add("error")
@@ -27,15 +41,11 @@ if (nombre.length > 0
   && (edad > 18 
     && edad < 120) ) {
   agregarInvitado(nombre, edad, nacionalidad)
+
   }
 }
 
-var botonBorrar = document.createElement("button")
-botonBorrar.textContent = "Eliminar invitado"
-botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
-document.body.appendChild(corteLinea)
-document.body.appendChild(botonBorrar);
+
 
 function agregarInvitado(nombre, edad, nacionalidad) {
 
@@ -52,27 +62,21 @@ function agregarInvitado(nombre, edad, nacionalidad) {
     nacionalidad = "Peruana"
   }
 
-var lista = document.getElementById("lista-de-invitados")
+var lista = document.getElementById("lista-de-invitados");
 
-var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
+var elementoLista = document.createElement("div");
+elementoLista.classList.add("elemento-lista");
 lista.appendChild(elementoLista)
 
-var spanNombre = document.createElement("span")
-var inputNombre = document.createElement("input")
-var espacio = document.createElement("br")
-spanNombre.textContent = "Nombre: "
-inputNombre.value = nombre 
-elementoLista.appendChild(spanNombre)
-elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
 
 function crearElemento(descripcion, valor) {
-var spanNombre = document.createElement("span")
-var inputNombre = document.createElement("input")
-var espacio = document.createElement("br")
-spanNombre.textContent = descripcion + ": "
-inputNombre.value = valor 
+var spanNombre = document.createElement("span");
+var inputNombre = document.createElement("input");
+var espacio = document.createElement("br");
+spanNombre.textContent = "Nombre: ";
+inputNombre.value = nombre ;
+spanNombre.textContent = descripcion + ": ";
+inputNombre.value = valor ;
 elementoLista.appendChild(spanNombre)
 elementoLista.appendChild(inputNombre)
 elementoLista.appendChild(espacio)
@@ -91,7 +95,8 @@ elementoLista.appendChild(corteLinea)
 elementoLista.appendChild(botonBorrar);
 
  botonBorrar.onclick = function() {
-// this.parentNode.style.display = 'none';
+ //this.parentNode.style.display = 'none';
+
 botonBorrar.parentNode.remove()
   }
 }
