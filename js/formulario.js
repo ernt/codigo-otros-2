@@ -87,16 +87,14 @@ crearElemento("Edad", edad)
 crearElemento("Nacionalidad", nacionalidad)
 
 
-var botonBorrar = document.createElement("button")
-botonBorrar.textContent = "Eliminar invitado"
-botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
-elementoLista.appendChild(corteLinea)
+var botonBorrar = document.createElement("button");
+botonBorrar.textContent = "Eliminar invitado";
+botonBorrar.id = "boton-borrar";
+var corteLinea = document.createElement("br");
+elementoLista.appendChild(corteLinea);
 elementoLista.appendChild(botonBorrar);
 
  botonBorrar.onclick = function() {
- //this.parentNode.style.display = 'none';
-
-botonBorrar.parentNode.remove()
+botonBorrar.parentNode.remove();
   }
 }
