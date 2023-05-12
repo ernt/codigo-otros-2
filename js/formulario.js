@@ -33,16 +33,17 @@ formulario.onsubmit = function(e) {
 
     
   }
-  if (edad < 18 || edad > 120) {
+  if (edad <= 18 || edad >= 120) {
     e.classList.add("error")
   }
 
 if (nombre.length > 0 
-  && (edad > 18 
-    && edad < 120) ) {
+  && (edad >= 18 
+    && edad <= 120) ) {
   agregarInvitado(nombre, edad, nacionalidad)
 
   }
+
 }
 
 
@@ -66,7 +67,7 @@ var lista = document.getElementById("lista-de-invitados");
 
 var elementoLista = document.createElement("div");
 elementoLista.classList.add("elemento-lista");
-lista.appendChild(elementoLista)
+lista.appendChild(elementoLista);
 
 
 function crearElemento(descripcion, valor) {
